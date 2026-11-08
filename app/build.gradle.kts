@@ -1,3 +1,6 @@
+import java.io.File
+import java.util.UUID
+
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
@@ -30,7 +33,7 @@ val genUuid by tasks.registering {
     doLast {
         val dir = file("src/main/assets/model-ru")
         dir.mkdirs()
-        File(dir, "uuid").writeText(java.util.UUID.randomUUID().toString())
+        File(dir, "uuid").writeText(UUID.randomUUID().toString())
     }
 }
 tasks.named("preBuild") { dependsOn(genUuid) }
